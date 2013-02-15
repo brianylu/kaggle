@@ -26,4 +26,17 @@ print 'Proportion of men who survive is %s' %n_men_survive
 
 #determine way to bin groups as necessary
 
+test_file_object = csv.reader(open('csv/test.csv','rb'))
+header = test_file_object.next()
+
+open_file_object = csv.writer(open("csv/testmodel-v1.csv", "wb"))
+
+for row in test_file_object:
+	if row[2] == 'female':
+		row.insert(0, '1')
+		open_file_object.writerow(row)
+	else:
+		row.insert(0,'0')
+		open_file_object.writerow(row)
+
 
